@@ -1,0 +1,21 @@
+name: C++ CI
+
+on:
+  push:
+    branches: [ "main", "master" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Skonfiguruj CMake
+      run: cmake -B build
+
+    - name: Zbuduj projekt
+      run: cmake --build build
+
+    - name: Uruchom testy jednostkowe
+      run: ctest --test-dir build --output-on-failure
