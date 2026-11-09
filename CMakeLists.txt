@@ -7,6 +7,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 include_directories(include)
 
 add_library(circuit_lib src/dummy.cpp)
+target_include_directories(circuit_lib PUBLIC include)
+
+add_executable(kalkulator src/main.cpp)
+target_link_libraries(kalkulator PRIVATE circuit_lib)
+
 
 include(FetchContent)
 FetchContent_Declare(
