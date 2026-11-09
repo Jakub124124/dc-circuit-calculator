@@ -1,0 +1,39 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Skonfiguruj CMake
+        run: cmake -B build
+
+      - name: Zbuduj projekt
+        run: cmake --build build --config Release
+
+      - name: Uruchom testy jednostkowe
+        run: ctest --test-dir build -C Release --output-on-failure
+
+      - name: Spakuj program
+        shell: pwsh
+        run: |
+          $name = "kalkulator-${{ github.ref_name }}-windows"
+          New-Item -ItemType Directory -Path $name
+          Copy-Item build/Release/kalkulator.exe $name/
+          Copy-Item README.md $name/
+          if (Test-Path examples) { Copy-Item examples $name/ -Recurse }
+          Compress-Archive -Path $name -DestinationPath "$name.zip"
+
+      - name: Opublikuj wydanie
+        uses: softprops/action-gh-release@v2
+        with:
+          files: kalkulator-${{ github.ref_name }}-windows.zip
