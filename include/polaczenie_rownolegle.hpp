@@ -17,7 +17,7 @@ public:
 
 private:
     std::vector< std::unique_ptr<ElementObwodu> >  elementy_;
-}
+};
 
 
 #endif //DCCIRCUITCALCULATOR_POLACZENIE_ROWNOLEGLE_HPP

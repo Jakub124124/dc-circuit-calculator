@@ -27,7 +27,7 @@ double PolaczenieRownolegle::rezystancja() const
         const double r = element->rezystancja();
         if (r<=0)
         {
-            throw BladObwodu("Element o niedodatniej rezystancji w polaczeniu rownoleglym")
+            throw BladObwodu("Element o niedodatniej rezystancji w polaczeniu rownoleglym");
         }
         suma_odwrotnosci += 1.0/r;
     }
