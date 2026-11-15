@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include_directories(include)
 
-add_library(circuit_lib src/rezystor.cpp)
+add_library(circuit_lib src/rezystor.cpp src/polaczenie_szeregowe.cpp)
 target_include_directories(circuit_lib PUBLIC include)
 
 add_executable(kalkulator src/main.cpp)
@@ -24,7 +24,7 @@ FetchContent_MakeAvailable(googletest)
 
 enable_testing()
 
-add_executable(unit_tests tests/test_rezystor.cpp)
+add_executable(unit_tests tests/test_rezystor.cpp tests/test_polaczenie_szeregowe.cpp)
 target_link_libraries(unit_tests PRIVATE circuit_lib gtest_main)
 
 include(GoogleTest)
