@@ -13,6 +13,7 @@ public:
     Rezystor(std::string id, double wartosc);
     double rezystancja() const override;
     const std::string& id() const;
+    void rozdziel(double napiecie, double prad, Wynik& wynik) const override;
 
 private:
     std::string id_;

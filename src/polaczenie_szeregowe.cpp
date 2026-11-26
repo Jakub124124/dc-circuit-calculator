@@ -19,3 +19,9 @@ double PolaczenieSzeregowe::rezystancja() const {
     }
     return suma;
 }
+void PolaczenieSzeregowe::rozdziel(double /*napiecie*/, double prad, Wynik& wynik) const {
+    for (const auto& element : elementy_) {
+        const double u = prad * element->rezystancja();
+        element->rozdziel(u, prad, wynik);
+    }
+}

@@ -1,6 +1,7 @@
 #include "rezystor.hpp"
 #include "blad_obwodu.hpp"
 #include <cmath>
+#include "wynik.hpp"
 
 Rezystor::Rezystor(std::string id, double wartosc)
     : id_(std::move(id)), wartosc_(wartosc) {
@@ -14,3 +15,6 @@ Rezystor::Rezystor(std::string id, double wartosc)
 
 double Rezystor::rezystancja() const { return wartosc_; }
 const std::string& Rezystor::id() const { return id_; }
+void Rezystor::rozdziel(double napiecie, double prad, Wynik& wynik) const {
+    wynik.dodaj(id_, wartosc_, napiecie, prad);
+}

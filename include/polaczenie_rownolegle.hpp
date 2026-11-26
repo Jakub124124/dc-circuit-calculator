@@ -14,10 +14,12 @@ class PolaczenieRownolegle : public ElementObwodu
 public:
     void dodaj(std::unique_ptr<ElementObwodu> element);
     double rezystancja() const override;
+    void rozdziel(double napiecie, double prad, Wynik& wynik) const override;
 
 private:
     std::vector< std::unique_ptr<ElementObwodu> >  elementy_;
 };
+
 
 
 #endif //DCCIRCUITCALCULATOR_POLACZENIE_ROWNOLEGLE_HPP

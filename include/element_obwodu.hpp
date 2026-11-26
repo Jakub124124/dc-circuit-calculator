@@ -5,10 +5,12 @@
 #ifndef DCCIRCUITCALCULATOR_ELEMENT_OBWODU_HPP
 #define DCCIRCUITCALCULATOR_ELEMENT_OBWODU_HPP
 
+class Wynik;
+
 class ElementObwodu {
 public:
     virtual ~ElementObwodu() = default;
     virtual double rezystancja() const = 0;
+    virtual void rozdziel(double napiecie, double prad, Wynik& wynik) const = 0;
 };
-
 #endif //DCCIRCUITCALCULATOR_ELEMENT_OBWODU_HPP

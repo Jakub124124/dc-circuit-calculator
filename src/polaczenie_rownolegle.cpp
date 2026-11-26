@@ -33,3 +33,9 @@ double PolaczenieRownolegle::rezystancja() const
     }
     return 1.0/suma_odwrotnosci;
 }
+void PolaczenieRownolegle::rozdziel(double napiecie, double /*prad*/, Wynik& wynik) const {
+    for (const auto& element : elementy_) {
+        const double i = napiecie / element->rezystancja();
+        element->rozdziel(napiecie, i, wynik);
+    }
+}
