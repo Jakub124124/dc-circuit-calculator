@@ -24,7 +24,7 @@ FetchContent_MakeAvailable(googletest)
 
 enable_testing()
 
-add_executable(unit_tests tests/test_rezystor.cpp tests/test_polaczenie_szeregowe.cpp tests/test_polaczenie_rownolegle.cpp tests/test_wynik.cpp)
+add_executable(unit_tests tests/test_rezystor.cpp tests/test_polaczenie_szeregowe.cpp tests/test_polaczenie_rownolegle.cpp tests/test_wynik.cpp tests/test_rodzial.cpp)
 target_link_libraries(unit_tests PRIVATE circuit_lib gtest_main)
 
 include(GoogleTest)
